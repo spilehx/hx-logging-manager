@@ -1,6 +1,5 @@
 package;
 
-// import spilehx.logger.GlobalLoggingSettings;
 
 class LoggingTests {
 	static function main() {

@@ -57,7 +57,6 @@ class Log {
 	private static function out(debugprefix:String, msg:String, type:String = "", toFile:Bool = false) {
 		var out:String = "";
 
-	
 		if (type == MSG_INFO) {
 			out = "\033[1;" + FG_GREEN + "mINFO: \033[0m";
 		} else if (type == MSG_SOFT) {
@@ -91,8 +90,8 @@ class Log {
 
 	#if (!js)
 	public static function sendRemoteLog(msg:String) {
-		if(GlobalLoggingSettings.settings.remoteLogUrl == ""){
-			warn("","remoteLogUrl not set");
+		if (GlobalLoggingSettings.settings.remoteLogUrl == "") {
+			warn("", "remoteLogUrl not set");
 			return;
 		}
 		var fullPath = Sys.programPath();
@@ -139,25 +138,15 @@ class Log {
 	}
 
 	private static function platfromSpecificLogCommand(msg:String) {
-		// if (allowLogs()) {
-			#if (js)
-			Reflect.callMethod(js.Browser.console, js.Browser.console.log, [msg]);
-			#else
-			Sys.println(msg);
-			#end
-		// }
+		#if (js)
+		Reflect.callMethod(js.Browser.console, js.Browser.console.log, [msg]);
+		#else
+		Sys.println(msg);
+		#end
 	}
 
-	// private static function allowLogs():Bool {
-	// 	#if (js)
-	// 	return (js.Browser.window.document.URL.indexOf("http://localhost") > -1);
-	// 	#else
-	// 	return true;
-	// 	#end
-	// }
-
 	#if (!js)
-	public static function appendTextToFile(content:String, outputFilePath:String, ?maxLength:Int = 500) {
+	public static function appendTextToFile(content:String, outputFilePath:String) {
 		var LINE_DELIM:String = "\n";
 		var contentArr:Array<String> = new Array<String>();
 
@@ -186,17 +175,18 @@ class Log {
 		writeLogFile("");
 	}
 
-	private static function writeLogFile(content:String) {
-		try {
-			if (sys.FileSystem.exists(GlobalLoggingSettings.settings.logFileSubFolder) == true) {
-				// get current content
-				if (sys.FileSystem.exists(GlobalLoggingSettings.settings.logFilePath)) {
-					var file = sys.io.File.write(GlobalLoggingSettings.settings.logFilePath, false);
-					file.writeString(content);
-					file.close();
-				}
-			}
-		} catch (e) {}
+	static function writeLogFile(text:String):Void {
+		var path = GlobalLoggingSettings.settings.logFilePath;
+		var dir = haxe.io.Path.directory(path);
+
+		if (!sys.FileSystem.exists(dir)) {
+			sys.FileSystem.createDirectory(dir);
+		}
+
+		// create file if missing, otherwise overwrite
+		var out = sys.io.File.write(path, false);
+		out.writeString(text + "\n");
+		out.close();
 	}
 	#end
 }
