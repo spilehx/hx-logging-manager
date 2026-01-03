@@ -92,7 +92,7 @@ class Log {
 	#if (!js)
 	public static function sendRemoteLog(msg:String) {
 		if(GlobalLoggingSettings.settings.remoteLogUrl == ""){
-			LOG_WARN("remoteLogUrl not set");
+			warn("","remoteLogUrl not set");
 			return;
 		}
 		var fullPath = Sys.programPath();
@@ -139,22 +139,22 @@ class Log {
 	}
 
 	private static function platfromSpecificLogCommand(msg:String) {
-		if (allowLogs()) {
+		// if (allowLogs()) {
 			#if (js)
 			Reflect.callMethod(js.Browser.console, js.Browser.console.log, [msg]);
 			#else
 			Sys.println(msg);
 			#end
-		}
+		// }
 	}
 
-	private static function allowLogs():Bool {
-		#if (js)
-		return (js.Browser.window.document.URL.indexOf("http://localhost") > -1);
-		#else
-		return true;
-		#end
-	}
+	// private static function allowLogs():Bool {
+	// 	#if (js)
+	// 	return (js.Browser.window.document.URL.indexOf("http://localhost") > -1);
+	// 	#else
+	// 	return true;
+	// 	#end
+	// }
 
 	#if (!js)
 	public static function appendTextToFile(content:String, outputFilePath:String, ?maxLength:Int = 500) {

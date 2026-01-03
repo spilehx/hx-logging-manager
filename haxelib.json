@@ -1,0 +1,12 @@
+{
+  "name": "hx-logging-manager",
+  "url": "https://github.com/spilehx/hx-logging-manager",
+  "license": "MIT",
+  "tags": ["haxe", "logging"],
+  "description": "Simple logging util suitable for all platforms",
+  "version": "0.0.1",
+  "classPath": "/src",
+  "contributors": ["spilehx"],
+  "releasenote": "",
+  "dependencies": {}
+}

@@ -16,5 +16,15 @@ class LoggingTests {
 		USER_MESSAGE_WARN("End-userfriendly warning message");
 
 
+		var testObj:Dynamic = {
+			foo:"bar",
+			boo:true,
+			num:1000
+		};
+
+		LOG_OBJECT(testObj);
+
+
+
 	}
 }
