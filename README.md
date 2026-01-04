@@ -22,8 +22,15 @@ Add it to your build:
 ```hxml
 -lib hx-logging-manager
 ```
+<br>
+
+> [!NOTE]  
+> **TLDR**: Just look at the [EXAMPLE](https://github.com/spilehx/hx-logging-manager/blob/main/src/LoggingExamples.hx) 
+
 
 ---
+
+
 
 ## Recommended setup: `import.hx`
 

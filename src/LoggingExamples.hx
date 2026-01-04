@@ -1,7 +1,5 @@
 package;
 
-import spilehx.logger.GlobalLogger;
-import spilehx.logger.GlobalLoggingSettings;
 
 /**
  * Minimal showcase for hx-logging-manager.
