@@ -14,7 +14,7 @@ The library focuses on:
 ## Installation
 
 ```bash
-haxelib install hx-logging-manager
+ haxelib git hx-logging-manager https://github.com/spilehx/hx-logging-manager
 ```
 
 Add it to your build:
