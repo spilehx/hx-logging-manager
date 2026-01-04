@@ -3,6 +3,9 @@ package spilehx.logger;
 import haxe.PosInfos;
 import haxe.Constraints.Function;
 
+#if !macro
+@:build(spilehx.logger.macro.ImportCheck.build())
+#end
 class GlobalLogger {
 	private static var debugPrefix:Function = Log.debugPrefix;
 
