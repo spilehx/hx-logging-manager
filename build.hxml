@@ -1,4 +1,4 @@
 
 -cp src
--main LoggingTests
---hl dist/LoggingTests.hl
+-main LoggingExamples
+--hl dist/LoggingExamples.hl

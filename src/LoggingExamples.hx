@@ -8,7 +8,7 @@ import spilehx.logger.GlobalLoggingSettings;
  *
  * Run this on sys targets to see file logging; run on js to see console output.
  */
-class LoggingTests {
+class LoggingExamples {
 	static function main() {
 		// Enable verbose logging so DEBUG/INFO/WARN output is shown.
 		LOG_SETTINGS.verbose = true;
